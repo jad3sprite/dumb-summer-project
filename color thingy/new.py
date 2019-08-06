@@ -22,11 +22,10 @@ pygame.display.set_caption("Help")
 def main():
     #equation for the y position on screen
 
-    numb1 = random.randint(10, 150)
-    numb2 = random.randint(1, 3)
-    equat = (width/numb2) + numb1
-    equat2 = (height/numb2) * 1.5
-    text_pos = [equat, equat2]
+    numb1 = 100
+    numb2 = 10
+    numb2 += 5
+    text_pos = [numb1, numb2]
 
     #defining how to generate the random info
     newnumb = random.randint(0, 1000)
@@ -37,32 +36,34 @@ def main():
     font = pygame.font.Font('arial.ttf', 16)
     text = font.render(new_main, True, (255, 255, 255))
     #surface for the text
-
-    stresources = 10
-    blue = pygame.color("#8FD8D8")
-    resources = font.render(stresources, True, blue)
-    rePos = (350, 10)
-    screen.blit(resources, rePos)
-
-
-    while stresources <= 100:
-        stresources += 1
-        time.sleep(10)
-
-
-
-
     screen.blit(text, text_pos)
     pygame.display.update()
 
+def resources():
+    stresources = 10
 
+    font = pygame.font.Font('arial.ttf', 16)
+    resource = font.render(str(stresources), True, (0, 188, 0))
+    repos = (600, 10)
+    screen.blit(resource, repos)
 
+    for stresources in range(100):
+        stresources += 1
+        screen.blit(resource, repos)
+        time.sleep(10)
+
+    pygame.display.update()
 
 z = 0
 
-while z <= 7:
+while z < 7:
     main()
+    resources()
+    pygame.display.update()
     z += 1
 
-else:
-    pygame.displa.update()
+
+
+for z in range(100000):
+    pygame.display.update()
+    time.sleep(10000)
